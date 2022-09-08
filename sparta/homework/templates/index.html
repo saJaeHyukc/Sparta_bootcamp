@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        
+        <title>원페이지쇼핑몰</title>
+        <meta property="og:title" content="원페이지 쇼핑몰" />
+        <meta property="og:description" content="내가 만든 첫 웹서비스" />
+        <meta property="og:image" content="{{ url_for('static', filename='ogimage.png') }}" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+            rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Do Hyeon', sans-serif;
+            }
+
+            .mytitle {
+
+                width: 500px;
+                height: 400px;
+                margin: auto;
+
+                background-image: url("http://kr.people.com.cn/NMediaFile/2014/0922/FOREIGN201409221055000177283683513.jpg");
+                background-size: cover;
+                background-position: center;
+
+                border-radius: 10px;
+
+                padding-top: 20px;
+
+            }
+
+            .span_font_size {
+                font-size: 15px;
+                font-weight: bold;
+
+            }
+
+            .font_align {
+                width: 700px;
+                margin: auto;
+            }
+
+            .btn_align {
+                width: 100px;
+                margin: auto;
+            }
+
+            .rate-color {
+                color: rgb(61, 58, 232);
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                q1(), order_listing();
+            });
+            function q1() {
+                $.ajax({
+                    type: "GET",
+                    url: "http://spartacodingclub.shop/sparta_api/rate",
+                    data: {},
+                    success: function (response) {
+                        let date = response['date']
+                        let rate = response['rate']
+
+                        let temp_html = `            
+                <li class="rate-color">날짜: ${date}  환율: ${rate}원 </li>`
+
+                        $('#names-q1').append(temp_html)
+                    }
+                })
+            }
+            function order_listing() {
+                // 주문목록 보기 API 연결
+                $.ajax({
+                    type: "GET",
+                    url: "/order",
+                    data: {},
+                    success: function (response) {
+                        let user_info = response['all_user_info'];
+
+                        for (let i = 0; i < user_info.length; i++) {
+                            let name = user_info[i]['name'];
+                            let addr = user_info[i]['addr'];
+                            let number = user_info[i]['number'];
+                            let hour = user_info[i]['hour'];
+                            
+                            let temp_html = `<tr>
+                                <th scope="row">${name}</th>
+                                <td>${addr}</td>
+                                <td>${number}</td>
+                                <td>${hour}</td>
+                            </tr>`
+
+                            $('#orders-box').append(temp_html)
+
+                        
+                        }
+                    }
+            })
+             } 
+        
+            function order() {
+                let name = $("#name").val();
+                let addr = $("#addr").val();
+                let number = $("#number").val();
+                let hour = $("#hour").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/order",
+                    data: {
+                        name_give:name,
+                        addr_give:addr,
+                        number_give:number,
+                        hour_give:hour
+                    },
+                    success: function (response) { // 성공하면
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="mytitle"></div>
+        <div class="font_align">
+            <p></p>
+            <h3>집사 서비스
+                <span class="span_font_size">
+                    가격: 50,000원/1시간
+                </span>
+            </h3>
+
+            <ul id="names-q1"></ul>
+
+            <p></p>
+            <h6>집안일로 피로한 당신! 단 몇 시간이라도 현실에서 벗어나고 싶습니까? 우리 집사 서비스로 그 현실에서 벗어나게 해드리겠습니다.
+            </h6>
+            <br></br>
+            <h3>
+                주문하기</h3>
+
+            <div class="form-group row">
+                <label for="inputname" class="col-sm-2 col-form-label">주문자 성함</label>
+                <div class="col-sm-10">
+                    <input type="name" class="form-control" id="name" placeholder="주문자 성함">
+                    <p></p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputaddr" class="col-sm-2 col-form-label">주소</label>
+                <div class="col-sm-10">
+                    <input type="addr" class="form-control" id="addr" placeholder="주소">
+                    <p></p>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label for="inputnumber" class="col-sm-2 col-form-label">전화번호</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="number" placeholder="전화번호">
+                    <p></p>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">시간</label>
+                </div>
+                <select class="custom-select" id="hour">
+                    <option selected="selected">-- 시간대를 선택하세요 --</option>
+                    <option value="12:00 ~ 13:00">12:00 ~ 13:00</option>
+                    <option value="13:00 ~ 14:00">13:00 ~ 14:00</option>
+                    <option value="14:00 ~ 15:00">14:00 ~ 15:00</option>
+                    <option value="15:00 ~ 16:00">15:00 ~ 16:00</option>
+                    <option value="16:00 ~ 17:00">16:00 ~ 17:00</option>
+                    <option value="17:00 ~ 18:00">17:00 ~ 18:00</option>
+                </select>
+            </div>
+        </div>
+        <br></br>
+        <div class="btn_align">
+            <button onclick="order()" type="button" class="btn btn-primary">신청하기</button>
+        </div>
+    </div>
+    <br></br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">이름</th>
+                <th scope="col">주소</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">시간대</th>
+            </tr>
+        </thead>
+        <tbody id="orders-box">
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
