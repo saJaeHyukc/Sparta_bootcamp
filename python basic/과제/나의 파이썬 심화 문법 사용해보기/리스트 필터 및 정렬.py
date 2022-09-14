@@ -12,7 +12,7 @@ people = [
     ("Richard Newton", "Pitcairn Islands", 17, "da@lasowiwa.su"),
     ("Eric Townsend", "Svalbard & Jan Mayen", 22, "jijer@cipzo.gp"),
     ("Trevor Hines", "Dominican Republic", 15, "ev@hivew.tm"),
-    ("Inez Little", "Namibia", 26, "meewi@mirha.ye"),s
+    ("Inez Little", "Namibia", 26, "meewi@mirha.ye"),
     ("Lloyd Aguilar", "Swaziland", 16, "oza@emneme.bb"),
     ("Erik Lane", "Turkey", 30, "efumazza@va.hn"),
 ]
