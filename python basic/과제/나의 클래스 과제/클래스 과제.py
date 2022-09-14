@@ -1,23 +1,23 @@
 # #도형 넓이 계산기
-# class Area:
-#     def __init__(self):
-#         self.width = int(input("가로를 적으세요:"))
-#         self.vertical = int(input("세로(높이)를 적으세요:"))
-#         self.PIE = 3.14
+class Area:
+    def __init__(self):
+        self.width = int(input("가로를 적으세요:"))
+        self.vertical = int(input("세로(높이)를 적으세요:"))
+        self.PIE = 3.14
 
-#     def square(self):
-#         print(self.width * self.vertical)
+    def square(self):
+        print(self.width * self.vertical)
 
-#     def triangle(self):
-#         print(self.width * self.vertical / 2)
+    def triangle(self):
+        print(self.width * self.vertical / 2)
 
-#     def circle(self):
-#         print((self.width/2)* (self.width/2) * self.PIE)
+    def circle(self):
+        print((self.width/2)* (self.width/2) * self.PIE)
 
-# area = Area()
-# area.square()
-# area.triangle()
-# area.circle()
+area = Area()
+area.square()
+area.triangle()
+area.circle()
 
 # 계산기 만들어보기
 # class Calc:
