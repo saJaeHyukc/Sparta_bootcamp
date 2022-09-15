@@ -16,7 +16,6 @@ users = [
     {"name": "Richard", "age": 21, "math_score": 71, "science_score": 95, "english_score": 61, "social_score": 59},
     {"name": "Callie", "age": 15, "math_score": 98, "science_score": 50, "english_score": 100, "social_score": 74},]
 user_list = []
-# print(list(users[0].values())[2:6])
 def get_filter_user(users):
     for i in range(len(users)):
         a = list(users[i].values())[2:6]
