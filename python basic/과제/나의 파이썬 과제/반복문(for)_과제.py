@@ -25,8 +25,6 @@ def get_filter_user(users):
             u_name = users[i]['name']
             u_age = users[i]['age']
             user_list.append({'name':u_name, 'age':u_age})
-            # b = users[0]
-            # user_list.append(b)
     return user_list
 
 filter_users = get_filter_user(users)
