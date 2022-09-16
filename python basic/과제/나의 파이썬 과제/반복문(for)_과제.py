@@ -25,7 +25,7 @@ def get_filter_user(users):
             u_age = users[i]['age']
             user_list.append({'name':u_name, 'age':u_age})
     return user_list
-
+# filter_users = [{"name":x["name"], "age": x["age"]} for x in users if sum([x["math_score", x["science_score"], x["english_score"], x["social_score"]]])/4 > 70]
 filter_users = get_filter_user(users)
 pprint(filter_users)
 """
