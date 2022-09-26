@@ -35,4 +35,4 @@ python manage.py startapp introduce
 
 ### 7. 127.0.0.1:8000/introduce/ 경로의 페이지에 접속했을 때 자기소개 페이지가 보일 수 있도록 설정해주세요
 
-python manage.pymanage.py runserver
+python manage.py runserver
