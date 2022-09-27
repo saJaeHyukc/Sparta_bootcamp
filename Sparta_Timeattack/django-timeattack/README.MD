@@ -1,3 +1,4 @@
+# 9/26 쪽지시험
 ### 1. 프로젝트에 사용될 폴더를 생성하고, 편집기에서 생성한 폴더를 열어주세요
 
 mkdir django-project
@@ -36,3 +37,21 @@ python manage.py startapp introduce
 ### 7. 127.0.0.1:8000/introduce/ 경로의 페이지에 접속했을 때 자기소개 페이지가 보일 수 있도록 설정해주세요
 
 python manage.py runserver
+
+# 9/27 쪽지시험
+### . models.py에 AccessLog 테이블을 생성해주세요
+
+- 필드
+    - created_at : 데이터가 생성된 시간을 알 수 있도록 datetimefield 사용
+    - location : 사용자가 어떤 template에 접근했는지 알 수 있도록 charfield 사용
+
+### 2. 생성된 테이블을 makemigrations / migrate 명령어를 통해 db에 반영해주세요
+
+### 3. 생성한 테이블을 admin.py에 등록해주세요
+
+### 4. 사용자가 introduce 페이지에 접속했을 때, 접속 로그를 남겨주세요
+
+- admin 페이지에서 로그를 봤을 때 언제 어떤 페이지에 접속했는지 알 수 있어야 합니다.
+- 로그를 저장할 때는 어떤 탬플릿을 조회했는지도 확인할 수 있도록 해주세요
+
+### 5. admin 페이지에 접속해서 접속 기록을 확인해주세요
