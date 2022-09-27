@@ -1,5 +1,8 @@
 from django.shortcuts import render
-
+from .models import AccessLog
 # Create your views here.
+
 def index(request):
-    return render(request, 'introduce/index.html')
+    AccessLog.objects.create(location='introduce')
+    log = AccessLog.objects.all()
+    return render(request, 'introduce/index.html',{'log':log})
