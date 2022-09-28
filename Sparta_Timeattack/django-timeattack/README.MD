@@ -55,3 +55,30 @@ python manage.py runserver
 - 로그를 저장할 때는 어떤 탬플릿을 조회했는지도 확인할 수 있도록 해주세요
 
 ### 5. admin 페이지에 접속해서 접속 기록을 확인해주세요
+
+# 9/28쪽지시험
+## 오늘의 목표 - User Model 확장하기
+
+1. 프로젝트에 사용될 폴더를 생성하고, 편집기에서 생성한 폴더를 열어주세요.
+2. 파이썬 가상 환경을 생성하고 활성화해주세요.
+3. Django 패키지를 설치해주세요.
+4. spartatest라는 django 프로젝트를 생성해주세요
+5. customuser라는 앱을 생성해주세요
+6. settings.py에 앱을 등록해주세요.
+7. Django의 User를 기반으로 만든 CustomModel라는 클래스를 만들어주세요.
+- 조건: 테이블 이름은 custom_user
+- Django의 User 모델에서 아래의 필드를 추가해주세요.
+    - address (TextField, max_length=500, blank=True)
+    - bio (TextField, max_length=500, blank=True)
+    
+    힌트: class CustomModel(AbstractUser)
+    
+1. Django에게 기본 인증과정 (AUTH_USER_MODEL)을 customuser 앱에 작성한 CustomModel로 사용하겠다! 라고 알려주세요.
+    
+    힌트: [settings.py](http://settings.py/)
+    
+2. 데이터베이스에 변경사항을 반영하고 적용해주세요.
+3. 관리자 계정을 만들어주세요.
+4. Admin 사이트에서 CustomModel를 볼 수 있도록 적용해주세요.
+    
+    서버를 켜고 CustomModels에서 아래와 같이 address와 bio를 볼 수 있다면 성공입니다.
