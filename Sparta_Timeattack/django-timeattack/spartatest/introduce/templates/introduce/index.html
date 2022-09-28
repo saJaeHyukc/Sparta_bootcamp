@@ -1,7 +1,7 @@
 안녕하세요! 저는 사재혁입니다! 앞으로 잘부탁드립니다.!
 {% for i in log %}
     <p>
-    {{i.created_at}}
+    {{ i.created_at }}
     <br>
-    {{i.location}}
+    {{ i.location | upper }}
 {% endfor %}

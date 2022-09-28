@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class AccessLog(models.Model):
     
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True,verbose_name= "created_date" )
     location = models.CharField(max_length=10, null=False)
 
     def __str__(self):
