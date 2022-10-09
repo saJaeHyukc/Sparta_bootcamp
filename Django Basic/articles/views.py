@@ -1,5 +1,5 @@
 import random 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 
 # Create your views here.
@@ -10,7 +10,7 @@ def dinner(request, name):
     menus = [{"name":'족발', "price": 30000}, {"name": '햄버거', "price": 5000}, 
             {"name": '치킨', "price": 20000}, {"name":'초밥', "price": 15000}]
     pick = random.choice(menus)
-    articles = Article.objects.all()
+    articles = Article.objects.order_by('-create_at')
     context ={
         'pick':pick,
         'name':name,
@@ -24,7 +24,8 @@ def review(request):
 
 def create_review(request):
     content = request.POST.get('content')
-    context = {
-        'content': content,
-    }
-    return render(request, 'review_result.html', context)
+    title = request.POST.get('title')
+    article = Article(title=title, content=content)
+    article.save()    
+    
+    return redirect('/articles/dinner/무언가/')

@@ -3,7 +3,7 @@
 <form class="form-group" action="{% url 'articles:create_review' %}" method="POST">
     {% csrf_token %}
     <label for="title"> Title: </label>
-    <input class="form-control" type="text" id="content" name="content" /><br />
+    <input class="form-control" type="text" id="content" name="title" /><br />
     <label for="title"> Content: </label>
     <textarea class="form-control" name="content" cols="30" rows="5"></textarea><br />
     <input type="submit" />
