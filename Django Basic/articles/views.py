@@ -29,3 +29,10 @@ def create_review(request):
     article.save()    
     
     return redirect('/articles/dinner/무언가/')
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article':article,
+    }
+    return render(request, 'detail.html', context)
