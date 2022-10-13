@@ -11,6 +11,7 @@
 - 스파르타 자료구조,알고리즘 원격강의
 ### Sparta_Timeattack
 - 내일배움캠프에서 실행하는 1시간 타임어택!!!!
-
 ### Django Basic
 - 거북이반 장고 기초 강의
+### Machine learning
+- 머신러닝 과제
